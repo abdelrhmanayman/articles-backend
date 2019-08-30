@@ -1,0 +1,1 @@
+module.exports = require('./user-inputs-types').concat(require('./articles-inputs-types'))

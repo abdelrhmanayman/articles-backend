@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "courts-dev",
+            "script": "npm",
+            "args": "run development"
+        }
+    ]
+}

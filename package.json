@@ -1,0 +1,30 @@
+{
+  "name": "paradox-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "export ENV=DEVELOPMENT|| set ENV=DEVELOPMENT&& nodemon ./app",
+    "production": "export ENV=PRODUCTION|| set ENV=PRODUCTION&& node ./app",
+    "development": "export ENV=DEVELOPMENT|| set ENV=DEVELOPMENT&& node ./app"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "compression": "^1.7.4",
+    "connect-mongo": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "express-session": "^1.16.2",
+    "graphql": "^14.5.3",
+    "graphql-tools": "^4.0.5",
+    "helmet": "^3.20.0",
+    "mongoose": "^5.6.10",
+    "multer": "^1.4.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
