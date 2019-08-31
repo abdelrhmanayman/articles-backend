@@ -11,6 +11,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const { mongodb: { URI }, PORTS, ENV, SECRET } = require('./configs/settings')
 const { initializeSystem } = require('./utils')
+const bodyParser = require('body-parser')
 const graphql = require('./graphql')
 require('./configs/passport-setup')
 
@@ -20,6 +21,8 @@ mongoose.connect(URI[CURRENT_ENV],
     .catch(error => console.error(error.message))
 
 app = express()
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
 app.use(cors({ origin: RegExp('/*/'), credentials: true }))
 app.use(compression())
 app.use(helmet())
@@ -41,15 +44,18 @@ app.use('/images', require('./service/image-server'))
 
 app.use('/graphql', graphqlHTTP((req, res) => ({
     schema: makeExecutableSchema(graphql),
-    graphiql: CURRENT_ENV === ENV.DEVELOPMENT,
+    graphiql: true,
     context: { req, res }
+
 })))
 
-app.post('/', graphqlHTTP((req, res) => ({
-    schema: makeExecutableSchema(graphql),
-    graphiql: false,
-    context: { req, res }
-})))
+app.post('/', graphqlHTTP((req, res) => {
+    return {
+        schema: makeExecutableSchema(graphql),
+        graphiql: false,
+        context: { req, res }
+    }
+}))
 
 app.listen(PORTS[CURRENT_ENV], () =>
     console.log(

@@ -64,9 +64,8 @@ exports.getRespStatus = ({ code }) =>
 
 
 exports.checkServerAuthorization = ({ permission }) =>
-    (req, res, next) => {
-        console.log(req.user)
-        !req.user ? res.sendStatus(STATUS_NOT_AUTHORIZED) :
-            (req.user.permissions.includes(permission)) ? next() :
+    ({user}, res, next) => {
+        !user ? res.sendStatus(STATUS_NOT_AUTHORIZED) :
+            (user.permissions.includes(permission)) ? next() :
                 res.sendStatus(STATUS_NOT_AUTHORIZED)
     }

@@ -48,3 +48,8 @@ exports.getArticleDetails = (_, { id }) => articleModelFind({
     one: true,
     filter: { _id: id }
 })
+
+exports.getWriterArticles = (_, { username }) => articleModelFind({
+    filter: { "meta.publishedBy": username }
+})
+

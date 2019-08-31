@@ -16,7 +16,7 @@ const articleSchema = new mongoose.Schema({
     picture: { type: String, required: true },
     text: { type: String, maxlength: 2000 },
     meta: {
-        createdAt: { type: String },
+        createdAt: { type: String, default: new Date().toISOString() },
         publishedAt: { type: String },
         publishedBy: { type: String },
         published: { type: Boolean, default: false }

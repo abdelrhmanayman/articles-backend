@@ -8,6 +8,7 @@ type USER {
     _id: String
     name: NAME
     role: String
+    username: String
 }
 
 `

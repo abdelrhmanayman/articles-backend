@@ -10,6 +10,7 @@ module.exports = `
         picture: String
         text: String
         meta: META
+        _id: String
     }
 
     type COMMENT { 

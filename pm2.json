@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "courts-dev",
+            "name": "paradox-dev",
             "script": "npm",
             "args": "run development"
         }

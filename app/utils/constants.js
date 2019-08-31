@@ -12,7 +12,7 @@ exports.STATUS_DUPLICATED = 599
 
 // Permissions
 exports.permissions = {
-    userManagement: "user-management",
+    addArticle: "add-article",
     uploadImage: "upload-image",
 }
 

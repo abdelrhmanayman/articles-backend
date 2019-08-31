@@ -1,5 +1,6 @@
 module.exports = `
-getComments(articleId: String): [COMMENT]
-getArticles: [ARTICLE]
-getArticleDetails(id: String): ARTICLE_DETAILS
+getComments(articleId: String): [COMMENT] @IsAuthenticated
+getArticles: [ARTICLE] @IsAuthenticated
+getArticleDetails(id: String): ARTICLE_DETAILS @IsAuthenticated
+getWriterArticles(username: String): [ARTICLE_DETAILS] @IsAuthenticated
 `

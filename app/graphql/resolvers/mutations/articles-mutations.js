@@ -1,12 +1,24 @@
 const { articleModelInsert, articleModelUpdate, articleModelDelete } = require('../../../models/article-model')
 
 
-exports.createArticle = async (_, { article }) => (await articleModelInsert(article)).name
+exports.createArticle = async (_, { article }, { req: { user: { username } } }) => {
+    let { _id, name } = await articleModelInsert(article)
+    if (_id) {
+        let { n, nModified } = await articleModelUpdate({
+            one: true,
+            filter: { _id },
+            update: { $set: { "meta.publishedBy": username } }
+        })
+        return n > 0 && nModified > 0 ? name : new err()
+    } else
+        return new err()
+
+}
 exports.publishArticle = async (_, { id }) => {
     let { n, nModified } = await articleModelUpdate({
         one: true,
         filter: { _id: id },
-        update: { $set: { "meta.published": true } }
+        update: { $set: { "meta.published": true, "meta.publishedAt": Date.now } }
     })
     return n > 0 && nModified > 0 ? true : false
 }

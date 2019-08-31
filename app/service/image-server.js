@@ -26,13 +26,13 @@ const storage = multer.diskStorage({ destination, filename })
 const upload = multer({ storage }).single('file')
 
 router.get('*', (req, res) => {
-    let imagePath = '/uploads' + req.url
+    let imagePath =  req.url
     if (req.url.length > 1 && existsSync(imagePath))
-        createReadStream(imagePath).pipe(res)
+        res.sendFile(imagePath)
     else res.sendStatus(STAUTS_NOT_FOUND)
 })
 
-// router.use(checkServerAuthorization({ permission: 'upload-file' }))
+router.use(checkServerAuthorization({ permission: 'upload-image' }))
 
 router.post('/', (req, res) => {
     try {
