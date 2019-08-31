@@ -41,7 +41,7 @@ exports.getComments = (_, { articleId }) => articleModelFind({
 
 exports.getArticles = () => articleModelFind({
     filter: { "meta.published": true },
-    selection: { picture: 1, name: 1, _id: 1 }
+    selection: { picture: 1, name: 1, _id: 1, meta: 1 }
 })
 
 exports.getArticleDetails = (_, { id }) => articleModelFind({

@@ -3,6 +3,7 @@ module.exports = `
         name: String
         picture: String
         _id: String
+        meta: META
     }
 
     type ARTICLE_DETAILS {
